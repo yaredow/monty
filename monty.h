@@ -1,17 +1,39 @@
-#ifndef __MONTY__H
-#define __MONTY__H
+#ifndef _MONTY_
+#define _MONTY_
 
-/* include these */
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
+/* Constants */
+#define SUCSS_OP		0
+#define VALID_PARM		0
+#define MIN_ARGS		2
+#define METH_STACK		300
+#define METH_QUEUE		301
+
+/* Common Errors */
+#define ERR_BAD_INST	100
+#define ERR_BAD_MALL	101
+#define ERR_INVLD_PARM	102
+
+/* Usage Errors */
+#define ERR_ARG_USG		200
+#define ERR_PUSH_USG	201
+#define ERR_PINT_USG	202
+#define ERR_POP_USG		203
+#define ERR_SWAP_USG	204
+#define ERR_ADD_USG		205
+#define ERR_SUB_USG		206
+#define ERR_DIV_USG		207
+#define ERR_DIV_ZRO		208
+#define ERR_MUL_USG		209
+#define ERR_MOD_USG		210
+#define ERR_PCH_USG		211
+#define ERR_PCH_EMP		212
+
 #include <ctype.h>
-#include <stdarg.h>
-#include <errno.h>
-#include <stdbool.h>
-
-/*structs they gave us */
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -24,9 +46,9 @@
  */
 typedef struct stack_s
 {
-		int n;
-		struct stack_s *prev;
-		struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -39,66 +61,40 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-		char *opcode;
-		void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-/* end structs they gave us */
 
-/* our global struct */
+extern stack_t *head;
 
-/**
- * struct monty_s - global struct to hold all the things
- * @file: monty file
- * @line: line we are interpreting
- * @stack: the stack we are building
- * @line_number: current line number read
- * @is_queue: flag for stack/ queue
- *
- * Description: this is our single global and holds everything we need.
- */
-typedef struct monty_s
-{
-	FILE *file;
-	char *line;
-	stack_t *stack;
-	unsigned int line_number;
-	bool is_queue;
-} monty_t;
-
-extern monty_t monty;
-
-/* prototypes - monty specific*/
-void open_up(int argc, char *filename);
-void read_line(void);
-void op_choose(stack_t **stack, char *opcode);
-void init_montyStruct(void);
-void free_it_all(void);
-void free_build(stack_t *h);
-bool check_input(char *str);
-
-
-/* prototypes - opcode functions */
-void push(char *argument);
-void pop(stack_t **stack, unsigned int linenumber);
-void swap(stack_t **stack, unsigned int linenumber);
-void nop(stack_t **stack, unsigned int linenumber);
-void add(stack_t **stack, unsigned int linenumber);
-void pall(stack_t **stack, unsigned int linenumber);
-void pint(stack_t **stack, unsigned int linenumber);
-void sub(stack_t **stack, unsigned int linenumber);
-void div_op(stack_t **stack, unsigned int linenumber);
-void mul(stack_t **stack, unsigned int linenumber);
-void mod(stack_t **stack, unsigned int linenumber);
-void pchar(stack_t **stack, unsigned int linenumber);
-void pstr(stack_t **stack, unsigned int linenumber);
-void rotl(stack_t **stack, unsigned int linenumber);
-void rotr(stack_t **stack, unsigned int linenumber);
-void stack_op(stack_t **stack, unsigned int linenumber);
-void queue_op(stack_t **stack, unsigned int linenumber);
-void push_queue(char *argument);
+void check_args_num(int argn);
+FILE *open_file(char *filename);
+void check_access_rights(char *filename);
+int check_push_param(char *param);
+int check_digits(char *s);
+void frees_stack(void);
+int handle_execution(char *op_code, char *op_param, unsigned int line, int m);
+void handle_error(int errno, char *opcode, unsigned int line, char *buff);
+void handle_cerror(int errno, char *opcode, unsigned int line);
+void handle_uerror(int errno, unsigned int line);
+void handle_more_uerror(int errno, unsigned int line);
+void (*pick_func(char *s))(stack_t **, unsigned int);
+unsigned int count_stack(stack_t *stack);
+void push(stack_t **stack, unsigned int param);
+void push_queue(stack_t **stack, unsigned int param);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void divide(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 #endif
-© 2021 GitHub, Inc.
-Terms
-Privacy
-
