@@ -1,3 +1,9 @@
+<p align="center">
+  <img
+    src="https://theme.zdassets.com/theme_assets/10239256/f69718478ae7ecaaae43d9f8aefd9638c313b55e.jpg"
+    alt="Holberton School logo">
+</p>
+
 # Monty Interpreter
 
 A language interpreter made in the C programming language to manage stacks and queues (LIFO and FIFO). The aim is to interpret Monty bytecodes files. [Monty](http://montyscoconut.github.io/) is a language that aims to close the gap between scripting and programming languages.
