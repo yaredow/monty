@@ -28,7 +28,7 @@ A language interpreter made in the C programming language to manage stacks and q
 
 To compile this project, you can use the following command:
 
-    ```
+```
 $ make
 ```
 
@@ -36,7 +36,7 @@ $ make
 
 
 |opcode  |  functionality|
-| --- |--- |
+| --- | --- |
 | push | add element to the 'top' of stack and 'end' of queue  |
 | pop  | remove element from 'top' of stack and 'end' of queue |
 |pall  |print every member of the structure|
