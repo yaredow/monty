@@ -117,4 +117,4 @@ All programs and functions were compiled with `gcc 4.8.4` using flags `-Wall -We
 All files have been written in the Betty Style.
 
 ## Author
-* **Yared Yilma** - [derric-d](https://github.com/derric-d)
+* **Yared Yilma** - [derric-d](https://www.linkedin.com/in/yared-yilma-37b586221/)
