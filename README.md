@@ -24,7 +24,7 @@ A language interpreter made in the C programming language to manage stacks and q
 * All your header files should be include guarded
 * You are expected to do the tasks in the order shown in the project
 
-# Compilation
+## Compilation
 
 To compile this project, you can use the following command:
 
@@ -33,11 +33,13 @@ $ make
 ```
 
 ## Allowable opcodes and what they do
-| opcode | functionality |
-| --- | --- |
-| push | add element to the 'top' of stack and 'end' of queue |
-| pop | remove element from 'top' of stack and 'end' of queue|
-| pall | print every member of the structure |
+
+
+|opcode  |  functionality|
+|--|--|
+| push | add element to the 'top' of stack and 'end' of queue  |
+| pop  | remove element from 'top' of stack and 'end' of queue |
+|pall  |print every member of the structure|
 | pint | prints the member value at the top of stack |
 | swap | swaps the order  of the 1st and 2nd elements in stack |
 | add | add top two member values |
@@ -52,6 +54,9 @@ $ make
 | rotr | the bottom of the stack becomes the top |
 | queue, stack | toggles the doubly link list implementation style |
 | nop | opcode should do nothing |
+
+
+
 
 Examples:
 `$ cat opcodetestfile.m`
@@ -117,4 +122,4 @@ All programs and functions were compiled with `gcc 4.8.4` using flags `-Wall -We
 All files have been written in the Betty Style.
 
 ## Author
-* **Yared Yilma** - [derric-d](https://www.linkedin.com/in/yared-yilma-37b586221/)
+* **Yared Yilma** - [Yared](https://www.linkedin.com/in/yared-yilma-37b586221/)
